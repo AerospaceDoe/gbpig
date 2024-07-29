@@ -61,7 +61,7 @@ class ImageTools():
 		return [ "-stroke", stroke or "none", "-strokewidth", str(stroke_width), "-fill", fill or "none", "-draw", "rectangle %f,%f %f,%f" % (box.base.x, box.base.y, upper.x, upper.y) ]
 
 	@classmethod
-	def imagemagick_draw_text(cls, pos, text, color = "red", font = "Arial", font_size = 12):
+	def imagemagick_draw_text(cls, pos, text, color = "red", font = "./FreeSans.otf", font_size = 12):
 		return [ "-stroke", "none", "-fill", color, "-font", font, "-pointsize", str(font_size), "-draw", "text %f,%f '%s'" % (pos.x, pos.y, text) ]
 
 	@classmethod
