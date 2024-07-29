@@ -26,7 +26,7 @@ import json
 class ImageTools():
 	@classmethod
 	def get_image_geometry(cls, filename):
-		json_data = subprocess.check_output([ "convert", filename, "json:-" ])
+		json_data = subprocess.check_output([ "magick", filename, "json:-" ])
 		data = json.loads(json_data)
 		image = data[0]["image"]
 		return (image["geometry"]["width"], image["geometry"]["height"])
@@ -67,4 +67,4 @@ class ImageTools():
 	@classmethod
 	def imagemagick_blit(cls, infile, affine, cropbox, virtual = "Transparent"):
 		matrix = ",".join("%f" % (value) for value in affine.aslist)
-		return [ "(", infile, "-virtual-pixel", virtual, "-affine", matrix, "-transform", "-crop", "%.0fx%.0f+%.0f+%.0f" % (cropbox.dimensions.x, cropbox.dimensions.y, cropbox.base.x, cropbox.base.y), ")", "-flatten" ]
+		return [ "(", infile, "-virtual-pixel", virtual, "+distort", "AffineProjection", matrix, "-crop", "%.0fx%.0f+%.0f+%.0f" % (cropbox.dimensions.x, cropbox.dimensions.y, cropbox.base.x, cropbox.base.y), ")", "-flatten" ]
