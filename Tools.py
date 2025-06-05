@@ -19,6 +19,13 @@
 #
 #	Johannes Bauer <JohannesBauer@gmx.de>
 
+import sys
+from pathlib import Path
+
+# Resolve actual path before import geo
+submodule_path = Path(__file__).parent / "submodules" / "geo"
+sys.path.insert(0, str(submodule_path))
+
 import geo
 import subprocess
 import json

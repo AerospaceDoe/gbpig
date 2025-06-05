@@ -20,7 +20,7 @@ of 10. Original documentation can be found here:
   * [For children](https://www.bmi.bund.de/SharedDocs/downloads/DE/veroeffentlichungen/themen/moderne-verwaltung/ausweise/passbild-schablone-kinder.pdf)
 
 ## Detailed Install instructions
-### Requirements
+### For Ubuntu Users
 
 Note: the following guide is tailored for ubuntu users. Other distros or OSes might have different procedures, which you can follow on the official pages for each project.
 
@@ -44,6 +44,29 @@ cd ImageMagick-7.1.1
 make -j8
 sudo make install
 ```
+
+### For Windows Users
+
+1. Download or clone this github repo. Navigate into the repo folder and make sure you pull the submodule [geo](https://github.com/johndoe31415/geo) with the following command in the Command Prompt.
+```cmd
+git.exe submodule update --init
+```
+
+2. Download the latest **ImageMagick Windows Binary Release** (e.g., 'ImageMagick-7.1.1-47-Q16-HDRI-x64-dll.exe') from the [official download page](https://imagemagick.org/script/download.php#windows).  
+
+3. During installation, make sure to check the option **"Add application directory to your system PATH"**.  
+   If you forgot, you can add it manually:
+   - Press `Win + R`, type `sysdm.cpl`, go to **Advanced > Environment Variables**
+   - Under **System variables**, find `Path`, click **Edit**, and add your ImageMagick application directory, e.g.:
+     ```
+     C:\Program Files\ImageMagick-7.1.1-Q16\
+     ```
+
+4. Use `python.exe gbpig` instead of `./gbpig` in the following usage instructions. For example:
+
+   ```cmd
+   python.exe gbpig example.json example_print_me.jpg
+   ```
 
 ## Usage
 Create the JSON file:
